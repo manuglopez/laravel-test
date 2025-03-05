@@ -8,8 +8,18 @@
 - MySQL o MariaDB
 - Nginx o Apache
 
-## 2-  La base de datos de test debe ser mysql o mariaDB y debe llamarse `mysql_testing` tal como se indica en el archivo `phpunit.xml`
+## 2- Clona el repositorio en tu máquina local e instala dependencias
 
+```bash
+git clone https://github.com/manuglopez/laravel-test.git project
+cd project
+cp .env.example .env  # edit your env variables
+composer install
+php artisan key:generate
+npm install && npm run build
+```
+## 2-  La base de datos de test debe ser mysql o mariaDB y debe llamarse `mysql_testing` tal como se indica en el archivo `phpunit.xml`
+No se olvide de crear esta base de datos
 
 
 ```xml
