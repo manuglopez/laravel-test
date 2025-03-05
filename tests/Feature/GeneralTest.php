@@ -17,6 +17,7 @@ class GeneralTest extends TestCase
 {
     use RefreshDatabase;
 
+    //agregue la ruta a web
     public function test_homepage_exist(): void
     {
         $response = $this->get('/');
@@ -26,6 +27,7 @@ class GeneralTest extends TestCase
             ->assertSee('Homepage');
     }
 
+    //cree StorePostRequest ya que se llamaba pero no existia, y ahí cree las validaciones
     public function test_post_form_request()
     {
         $response = $this->post(route('posts.store'));
@@ -42,6 +44,7 @@ class GeneralTest extends TestCase
         $this->assertDatabaseHas('posts', ['title' => $title]);
     }
 
+    //creo una funcion encargada de borrar la foto 
     public function test_remove_oldfiles_on_update_post()
     {
         $response = $this->post(route('posts.store'), [
@@ -63,6 +66,7 @@ class GeneralTest extends TestCase
         $this->assertFalse(Storage::exists($post->photo));
     }
 
+    //creo la funcion que une user con team para que pueda tomar los datos relacionados
     public function test_teams_user()
     {
         $user = User::factory()->create();
@@ -79,6 +83,7 @@ class GeneralTest extends TestCase
             ->assertSee($createdAt);
     }
 
+    //modifico el userController para que valide si existe el usuario, si está actualiza el email y sino crea el usuario.
     public function test_user_check_or_update()
     {
         $response = $this->get(route('user', ['john', 'john@doe.com']));
@@ -103,6 +108,7 @@ class GeneralTest extends TestCase
         $this->assertDatabaseCount('users', 2);
     }
 
+    //Agrego las validaciones en RegisteredUserController y cambio la variable validPassword
     public function test_password_strength_uppercase_lowercase_numbers_letter()
     {
         // We need to ensure that the password contains at least one uppercase letter, one lowercase letter, and one number and a minimum of 8 characters.
@@ -111,9 +117,9 @@ class GeneralTest extends TestCase
             'name'  => 'New name',
             'email' => 'new@email.com',
         ];
-
+        
         $invalidPassword = '12345678';
-        $validPassword = 'a12345678';
+        $validPassword = 'aB12345678';
 
         $this->post('/register', $user + [
                 'password'              => $invalidPassword,
@@ -129,6 +135,7 @@ class GeneralTest extends TestCase
         $this->assertDatabaseHas('users', $user);
     }
 
+    //Agrego el loop en el user/index para que recorra los usuarios y si no hay que devuelva no content.
     public function test_shows_table_loop()
     {
         $response = $this->get(route('users'));
@@ -139,6 +146,7 @@ class GeneralTest extends TestCase
         $this->assertStringNotContainsString('No content', $response->content());
     }
 
+    //Agregó onDelete('cascade') en la migración de products para que al eliminar una categoría, sus productos también se eliminen automáticamente.
     public function test_delete_parent_child_record()
     {
         // We just test if the test succeeds or throws an exception
