@@ -38,3 +38,7 @@ php artisan test
 La clase `GeneralTest.php` se encuentra en la carpeta `tests/Feature` y contiene 8 test que actualmente fallan a proposito y la tarea consiste en conseguir que todos funcionen y ponerlos en verde.
 
 
+## 5- Puedes hacer un pull request a este repositorio con tus cambios. Dispones 8 horas para completar el ejercicio.
+NB: Realmente el ejercicio se hace en menos tiempo.
+
+Animo y buena suerte! 🚀
