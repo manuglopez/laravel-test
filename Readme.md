@@ -18,7 +18,7 @@ composer install
 php artisan key:generate
 npm install && npm run build
 ```
-## 2-  La base de datos de test debe ser mysql o mariaDB y debe llamarse `mysql_testing` tal como se indica en el archivo `phpunit.xml`
+## 3-  La base de datos de test debe ser mysql o mariaDB y debe llamarse `mysql_testing` tal como se indica en el archivo `phpunit.xml`
 No se olvide de crear esta base de datos
 
 
@@ -27,18 +27,18 @@ No se olvide de crear esta base de datos
         <env name="DB_DATABASE" value="mysql_testing"/>
 ```
 
-## 3- Para ejecutar las pruebas  debes ejecutar el siguiente comando en la raíz del proyecto
+## 4- Para ejecutar las pruebas  debes ejecutar el siguiente comando en la raíz del proyecto
 
 ```bash
 php artisan test
 ```
 
-## 4- El objetivo es que todos los test de la clase `GeneralTest.php` pasen correctamente.
+## 5- El objetivo es que todos los test de la clase `GeneralTest.php` pasen correctamente.
 
 La clase `GeneralTest.php` se encuentra en la carpeta `tests/Feature` y contiene 8 test que actualmente fallan a proposito y la tarea consiste en conseguir que todos funcionen y ponerlos en verde.
 
 
-## 5- Puedes hacer un pull request a este repositorio con tus cambios. Dispones 8 horas para completar el ejercicio.
+## 6- Puedes hacer un pull request a este repositorio con tus cambios. Dispones 8 horas para completar el ejercicio.
 NB: Realmente el ejercicio se hace en menos tiempo.
 
 Animo y buena suerte! 🚀
